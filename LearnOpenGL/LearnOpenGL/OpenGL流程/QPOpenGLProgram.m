@@ -24,8 +24,10 @@
         _program = glCreateProgram();
         _logs = @[].mutableCopy;
         
-        [self complieShader:&_vertexShader type:GL_VERTEX_SHADER code:nil];
-        [self complieShader:&_fragmentShader type:GL_FRAGMENT_SHADER code:nil];
+        NSString *vs = [[NSBundle mainBundle] pathForResource:@"VertexShader" ofType:@"vs"];
+        [self complieShader:&_vertexShader type:GL_VERTEX_SHADER code:vs];
+        NSString *fs = [[NSBundle mainBundle] pathForResource:@"FragmentShader" ofType:@"fs"];
+        [self complieShader:&_fragmentShader type:GL_FRAGMENT_SHADER code:fs];
         
         glAttachShader(_program, _vertexShader);
         glAttachShader(_program, _fragmentShader);
@@ -84,5 +86,10 @@
     return status == GL_TRUE;
 }
 
+
+#pragma mark - Setter & Getter
+- (NSArray<NSString *> *)logs {
+    return [_logs copy];
+}
 
 @end

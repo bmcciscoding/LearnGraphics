@@ -16,6 +16,8 @@
 		1D0D8BB12520B1F7005492DF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D8BB02520B1F7005492DF /* main.m */; };
 		1D0D8BBD2520B5DC005492DF /* QPOpenGLEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D8BBC2520B5DC005492DF /* QPOpenGLEngine.m */; };
 		1D96C7A02520BDF800E03FDB /* QPOpenGLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D96C79F2520BDF800E03FDB /* QPOpenGLProgram.m */; };
+		1D96C7A42520CB3100E03FDB /* VertextShader.vs in Resources */ = {isa = PBXBuildFile; fileRef = 1D96C7A22520CB3000E03FDB /* VertextShader.vs */; };
+		1D96C7A52520CB3100E03FDB /* FragmentShader.fs in Resources */ = {isa = PBXBuildFile; fileRef = 1D96C7A32520CB3000E03FDB /* FragmentShader.fs */; };
 		B8ADCA1A2BA40DF6F027CC11 /* Pods_LearnOpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AAFD6B6CE6475A2255AE30 /* Pods_LearnOpenGL.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +38,8 @@
 		1D0D8BBC2520B5DC005492DF /* QPOpenGLEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QPOpenGLEngine.m; sourceTree = "<group>"; };
 		1D96C79E2520BDF800E03FDB /* QPOpenGLProgram.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QPOpenGLProgram.h; sourceTree = "<group>"; };
 		1D96C79F2520BDF800E03FDB /* QPOpenGLProgram.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QPOpenGLProgram.m; sourceTree = "<group>"; };
+		1D96C7A22520CB3000E03FDB /* VertextShader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = VertextShader.vs; sourceTree = "<group>"; };
+		1D96C7A32520CB3000E03FDB /* FragmentShader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = FragmentShader.fs; sourceTree = "<group>"; };
 		50EEAB80CE37D126C9057859 /* Pods-LearnOpenGL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearnOpenGL.release.xcconfig"; path = "Target Support Files/Pods-LearnOpenGL/Pods-LearnOpenGL.release.xcconfig"; sourceTree = "<group>"; };
 		72AAFD6B6CE6475A2255AE30 /* Pods_LearnOpenGL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LearnOpenGL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC2E59C0DB712CF1668F82B2 /* Pods-LearnOpenGL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LearnOpenGL.debug.xcconfig"; path = "Target Support Files/Pods-LearnOpenGL/Pods-LearnOpenGL.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 		1D0D8BB82520B200005492DF /* OpenGL流程 */ = {
 			isa = PBXGroup;
 			children = (
+				1D96C7A32520CB3000E03FDB /* FragmentShader.fs */,
+				1D96C7A22520CB3000E03FDB /* VertextShader.vs */,
 				1D0D8BBB2520B5DC005492DF /* QPOpenGLEngine.h */,
 				1D0D8BBC2520B5DC005492DF /* QPOpenGLEngine.m */,
 				1D96C79E2520BDF800E03FDB /* QPOpenGLProgram.h */,
@@ -184,7 +190,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D96C7A42520CB3100E03FDB /* VertextShader.vs in Resources */,
 				1D0D8BAE2520B1F7005492DF /* LaunchScreen.storyboard in Resources */,
+				1D96C7A52520CB3100E03FDB /* FragmentShader.fs in Resources */,
 				1D0D8BAB2520B1F7005492DF /* Assets.xcassets in Resources */,
 				1D0D8BA92520B1F3005492DF /* Main.storyboard in Resources */,
 			);
