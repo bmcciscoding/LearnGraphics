@@ -7,6 +7,8 @@
 
 #import "ViewController.h"
 
+#import "QPOpenGLView.h"
+
 @interface ViewController ()
 
 @end
@@ -16,6 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    QPOpenGLView *glView = [[QPOpenGLView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:glView];
+    
+    
 }
 
 

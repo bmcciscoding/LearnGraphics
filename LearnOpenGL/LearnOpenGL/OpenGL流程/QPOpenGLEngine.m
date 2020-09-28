@@ -7,11 +7,11 @@
 
 #import "QPOpenGLEngine.h"
 
-@import OpenGLES;
-
 @implementation QPOpenGLEngine {
     
     EAGLContext *_ctx;
+    
+    GLKView *_content;
 }
 
 - (instancetype)init
@@ -26,6 +26,15 @@
         
     }
     return self;
+}
+
+- (void)bindContent:(GLKView *)content {
+    _content = content;
+    _content.context = _ctx;
+    [EAGLContext setCurrentContext:_ctx];
+    
+    
+    
 }
 
 

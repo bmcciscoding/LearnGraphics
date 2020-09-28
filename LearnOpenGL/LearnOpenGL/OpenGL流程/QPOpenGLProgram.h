@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface QPOpenGLProgram : NSObject
 
-@property (nonatomic, copy) NSArray<NSString> *logs;
+@property (nonatomic, copy) NSArray<NSString*> *logs;
 
 
 @end
