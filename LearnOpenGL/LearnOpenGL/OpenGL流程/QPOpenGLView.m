@@ -7,6 +7,8 @@
 
 #import "QPOpenGLView.h"
 
+#import "QPOpenGLProgram.h"
+
 
 #define _GLLayer ((CAEAGLLayer *)self.layer)
 
@@ -18,6 +20,7 @@
     GLuint _FBO;
     GLuint _renderBuffer;
     EAGLContext *_ctx;
+    QPOpenGLProgram *_program;
 }
 
 
@@ -63,6 +66,9 @@
     
     glClearColor(0, 1, 1, 1);
     glClear(GL_COLOR_BUFFER_BIT);
+    
+    QPOpenGLProgram *program = [QPOpenGLProgram new];
+    NSLog(@"%@", program.logs);
     
     [_ctx presentRenderbuffer:GL_RENDERBUFFER];
     

@@ -15,6 +15,7 @@
     NSMutableArray<NSString *> *_logs;
 }
 
+#define _SHADER_CODE(name, type) [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:type] encoding:NSUTF8StringEncoding error:nil];
 
 - (instancetype)init
 {
@@ -24,9 +25,9 @@
         _program = glCreateProgram();
         _logs = @[].mutableCopy;
         
-        NSString *vs = [[NSBundle mainBundle] pathForResource:@"VertexShader" ofType:@"vs"];
+        NSString *vs = _SHADER_CODE(@"VertextShader", @"vs");
         [self complieShader:&_vertexShader type:GL_VERTEX_SHADER code:vs];
-        NSString *fs = [[NSBundle mainBundle] pathForResource:@"FragmentShader" ofType:@"fs"];
+        NSString *fs = _SHADER_CODE(@"FragmentShader", @"fs");
         [self complieShader:&_fragmentShader type:GL_FRAGMENT_SHADER code:fs];
         
         glAttachShader(_program, _vertexShader);
@@ -34,14 +35,13 @@
         
         [self link];
         
-        glUseProgram(_program);
-        
     }
     return self;
 }
 
 
 - (BOOL)complieShader:(GLuint *)shader type:(GLenum)type code:(NSString *)code {
+    NSParameterAssert(code != nil);
     GLint status;
     const GLchar *sourceCode;
     sourceCode = (GLchar *)[code UTF8String];
@@ -84,6 +84,10 @@
         }
     }
     return status == GL_TRUE;
+}
+
+- (void)use {
+    glUseProgram(_program);
 }
 
 
