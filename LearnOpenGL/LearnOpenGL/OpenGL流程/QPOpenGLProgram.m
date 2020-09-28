@@ -33,8 +33,6 @@
         glAttachShader(_program, _vertexShader);
         glAttachShader(_program, _fragmentShader);
         
-        [self link];
-        
     }
     return self;
 }
@@ -90,10 +88,13 @@
     glUseProgram(_program);
 }
 
-
 #pragma mark - Setter & Getter
 - (NSArray<NSString *> *)logs {
     return [_logs copy];
+}
+
+- (uint)currentProgram {
+    return _program;
 }
 
 @end
