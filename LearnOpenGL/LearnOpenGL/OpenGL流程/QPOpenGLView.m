@@ -69,6 +69,10 @@
             -1.0, 1.0, 0.0,
             -1.0, -1.0, 0.0,
             1.0, -1.0, 0.0,
+            
+            -1.0, 1.0, 0.0,
+            1.0, 1.0, 0.0,
+            1.0, -1.0, 0.0,
         };
         glBufferData(GL_ARRAY_BUFFER, sizeof(vertext), vertext, GL_STATIC_DRAW);
         GLint loc = glGetAttribLocation(program.currentProgram, "pos");
@@ -79,7 +83,11 @@
     {
         const float vertext[] = {
             1.0, 0.5, 0.0,
-            0.5, 0.0, 1.0,
+            1.0, 0.5, 0.0,
+            1.0, 0.5, 0.0,
+            
+            0.0, 1.0, 0.5,
+            0.0, 1.0, 0.5,
             0.0, 1.0, 0.5,
         };
         GLuint buffer;
@@ -105,7 +113,7 @@
     glViewport(0, 0, self.frame.size.width, self.frame.size.height);
     glClearColor(0, 1, 1, 0.2);
     glClear(GL_COLOR_BUFFER_BIT);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
     [_ctx presentRenderbuffer:GL_RENDERBUFFER];
 }
 
