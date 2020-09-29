@@ -41,7 +41,7 @@
     self.opaque = NO;
     
     _GLLayer.drawableProperties = @{
-        kEAGLDrawablePropertyRetainedBacking: @(YES),
+        //kEAGLDrawablePropertyRetainedBacking: @(YES),
         kEAGLDrawablePropertyColorFormat: kEAGLColorFormatRGBA8
     };
     
@@ -52,53 +52,60 @@
 }
 
 - (void)_createFBO {
-    
-    glGenRenderbuffers(1, &_renderBuffer);
-    glBindRenderbuffer(GL_RENDERBUFFER, _renderBuffer);
-    [_ctx renderbufferStorage:GL_RENDERBUFFER fromDrawable:_GLLayer];
-    
-    glGenFramebuffers(1, &_FBO);
-    glBindFramebuffer(GL_FRAMEBUFFER, _FBO);
-    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _renderBuffer);
-    
+    // use pr0gram
     QPOpenGLProgram *program = [QPOpenGLProgram new];
     if ([program link]) {
         glUseProgram(program.currentProgram);
     }
     
-    glViewport(0, 0, self.frame.size.width, self.frame.size.height);
-    glClearColor(0, 1, 1, 0.2);
-    glClear(GL_COLOR_BUFFER_BIT);
-    
-    // x y z
-    const float vertext[] = {
-        0.0, 0.0, 0.0,
-        1.0, 0.0, 0.0,
-        0.0, 1.0, 0.0,
-    };
-    
-    GLuint VBO;
-    glGenBuffers(1, &VBO);
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertext), vertext, GL_STATIC_DRAW);
+    GLuint buffer;
+    glGenBuffers(1, &buffer);
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
     
     {
+        // pass value
+        // x y z
+        const float vertext[] = {
+            -1.0, 1.0, 0.0,
+            -1.0, -1.0, 0.0,
+            1.0, -1.0, 0.0,
+        };
+        glBufferData(GL_ARRAY_BUFFER, sizeof(vertext), vertext, GL_STATIC_DRAW);
         GLint loc = glGetAttribLocation(program.currentProgram, "pos");
         glVertexAttribPointer(loc, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(loc);
     }
 
-    
     {
+        const float vertext[] = {
+            1.0, 0.5, 0.0,
+            0.5, 0.0, 1.0,
+            0.0, 1.0, 0.5,
+        };
+        GLuint buffer;
+        glGenBuffers(1, &buffer);
+        glBindBuffer(GL_ARRAY_BUFFER, buffer);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(vertext), vertext, GL_STATIC_DRAW);
         GLint loc = glGetAttribLocation(program.currentProgram, "color");
         glVertexAttribPointer(loc, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
         glEnableVertexAttribArray(loc);
     }
-
-
     
+    // draw
+    GLuint RBO;
+    glGenRenderbuffers(1, &RBO);
+    glBindRenderbuffer(GL_RENDERBUFFER, RBO);
+    [_ctx renderbufferStorage:GL_RENDERBUFFER fromDrawable:_GLLayer];
+    
+    GLuint FBO;
+    glGenFramebuffers(1, &FBO);
+    glBindFramebuffer(GL_FRAMEBUFFER, FBO);
+    glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, RBO);
+    
+    glViewport(0, 0, self.frame.size.width, self.frame.size.height);
+    glClearColor(0, 1, 1, 0.2);
+    glClear(GL_COLOR_BUFFER_BIT);
     glDrawArrays(GL_TRIANGLES, 0, 3);
-    
     [_ctx presentRenderbuffer:GL_RENDERBUFFER];
 }
 
