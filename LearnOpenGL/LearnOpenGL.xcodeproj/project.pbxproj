@@ -15,6 +15,7 @@
 		1D0D8BAE2520B1F7005492DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D0D8BAC2520B1F7005492DF /* LaunchScreen.storyboard */; };
 		1D0D8BB12520B1F7005492DF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D8BB02520B1F7005492DF /* main.m */; };
 		1D0D8BBD2520B5DC005492DF /* QPOpenGLEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D0D8BBC2520B5DC005492DF /* QPOpenGLEngine.m */; };
+		1D8183BC2524641200CC2B86 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1D8183BB2524641200CC2B86 /* test.jpg */; };
 		1D8DEEFE2521BE5700A859C8 /* QPOpenGLData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8DEEFD2521BE5700A859C8 /* QPOpenGLData.m */; };
 		1D8DEF032521C0F400A859C8 /* QPOpenGLVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8DEF022521C0F400A859C8 /* QPOpenGLVC.m */; };
 		1D8DEF082521CA4400A859C8 /* QPOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D8DEF072521CA4400A859C8 /* QPOpenGLView.m */; };
@@ -39,6 +40,7 @@
 		1D0D8BB02520B1F7005492DF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1D0D8BBB2520B5DC005492DF /* QPOpenGLEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QPOpenGLEngine.h; sourceTree = "<group>"; };
 		1D0D8BBC2520B5DC005492DF /* QPOpenGLEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QPOpenGLEngine.m; sourceTree = "<group>"; };
+		1D8183BB2524641200CC2B86 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		1D8DEEFC2521BE5700A859C8 /* QPOpenGLData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QPOpenGLData.h; sourceTree = "<group>"; };
 		1D8DEEFD2521BE5700A859C8 /* QPOpenGLData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QPOpenGLData.m; sourceTree = "<group>"; };
 		1D8DEF012521C0F400A859C8 /* QPOpenGLVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QPOpenGLVC.h; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		1D0D8BB82520B200005492DF /* OpenGL流程 */ = {
 			isa = PBXGroup;
 			children = (
+				1D8183BB2524641200CC2B86 /* test.jpg */,
 				1D96C7A32520CB3000E03FDB /* FragmentShader.fs */,
 				1D96C7A22520CB3000E03FDB /* VertextShader.vs */,
 				1D0D8BBB2520B5DC005492DF /* QPOpenGLEngine.h */,
@@ -210,6 +213,7 @@
 				1D96C7A52520CB3100E03FDB /* FragmentShader.fs in Resources */,
 				1D0D8BAB2520B1F7005492DF /* Assets.xcassets in Resources */,
 				1D0D8BA92520B1F3005492DF /* Main.storyboard in Resources */,
+				1D8183BC2524641200CC2B86 /* test.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
