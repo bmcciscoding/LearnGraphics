@@ -69,6 +69,7 @@ typedef struct {
 - (void)drawTextture2D {
 
 
+
     // 将 UIImage 转换为 CGImageRef
     NSString *path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"jpg"];
     UIImage *image = [[UIImage alloc] initWithContentsOfFile:path];
@@ -90,8 +91,9 @@ typedef struct {
     GLuint texture;
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
-    glGenerateMipmap(GL_TEXTURE_2D);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData);
+    //glGenerateMipmap(GL_TEXTURE_2D);
+    //glBindTexture(GL_TEXTURE_2D, 0);、
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
@@ -113,26 +115,28 @@ typedef struct {
 
     {
         // 获取 shader 中的参数，然后传数据进去
-        GLuint positionSlot = glGetAttribLocation(_program, "Position");
+        //GLuint positionSlot = glGetAttribLocation(_program, "Position");
         GLuint textureSlot = glGetUniformLocation(_program, "Texture");  // 注意 Uniform 类型的获取方式
-        GLuint textureCoordsSlot = glGetAttribLocation(_program, "TextureCoords");
+        //GLuint textureCoordsSlot = glGetAttribLocation(_program, "TextureCoords");
         // 将纹理 ID 传给着色器程序
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, texture);
+        //glActiveTexture(GL_TEXTURE0);
+        //glBindTexture(GL_TEXTURE_2D, texture);
         glUniform1i(textureSlot, 0);  // 将 textureSlot 赋值为 0，而 0 与 GL_TEXTURE0 对应，这里如果写 1，上面也要改成 GL_TEXTURE1
 
         // 创建顶点缓存
-        GLuint vertexBuffer;
-        glGenBuffers(1, &vertexBuffer);
-        glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
-        GLsizeiptr bufferSizeBytes = sizeof(SenceVertex) * 4;
-        glBufferData(GL_ARRAY_BUFFER, bufferSizeBytes, self.vertices, GL_STATIC_DRAW);
+        GLuint VBO;
+        glGenBuffers(1, &VBO);
+        glBindBuffer(GL_ARRAY_BUFFER, VBO);
+        GLsizeiptr dataSize = sizeof(SenceVertex) * 4;
+        glBufferData(GL_ARRAY_BUFFER, dataSize, self.vertices, GL_STATIC_DRAW);
 
         // 设置顶点数据
+        GLuint positionSlot = glGetAttribLocation(_program, "Position");
         glEnableVertexAttribArray(positionSlot);
         glVertexAttribPointer(positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(SenceVertex), NULL + offsetof(SenceVertex, positionCoord));
 
-        // 设置纹理数据
+        // 设置纹理数据、
+        GLuint textureCoordsSlot = glGetAttribLocation(_program, "TextureCoords");
         glEnableVertexAttribArray(textureCoordsSlot);
         glVertexAttribPointer(textureCoordsSlot, 2, GL_FLOAT, GL_FALSE, sizeof(SenceVertex), NULL + offsetof(SenceVertex, textureCoord));
     }
@@ -208,7 +212,7 @@ typedef struct {
     glViewport(0, 0, self.frame.size.width, self.frame.size.height);
     glClearColor(0, 1, 1, 0.2);
     glClear(GL_COLOR_BUFFER_BIT);
-    //glDrawArrays(GL_LINE_STRIP, 0, 4);
+//    glDrawArrays(GL_LINE_STRIP, 0, 4);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
     [_ctx presentRenderbuffer:GL_RENDERBUFFER];
 }
